@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Recepción de Granos - Comercial Nieves</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #b80000 0%, #8a0000 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .form-container {
+            padding: 40px;
+        }
+        
+        .form-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #b80000;
+        }
+        
+        .form-section h3 {
+            color: #b80000;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            background: #b80000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #b80000;
+            box-shadow: 0 0 0 3px rgba(184, 0, 0, 0.1);
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .three-col {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-section {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            margin-top: 30px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #b80000 0%, #8a0000 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(184, 0, 0, 0.3);
+            min-width: 200px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 0, 0, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .calculation-display {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .total-display {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .info-card {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .info-card h4 {
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        
+        .date-time {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            color: #1565c0;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .row, .three-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #b80000;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 15px;
+            color: #155724;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 Comercial Nieves</h1>
+            <p>Sistema de Recepción y Control de Granos</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="info-card">
+                <h4>📋 Instrucciones</h4>
+                <p>Complete todos los campos requeridos. Los cálculos se realizarán automáticamente y los datos se guardarán en Google Sheets.</p>
+            </div>
+            
+            <form id="granosForm">
+                <!-- Información General -->
+                <div class="form-section">
+                    <h3><span class="section-icon">1</span>Información General</h3>
+                    
+                    <div class="three-col">
+                        <div class="form-group">
+                            <label for="cliente">Cliente *</label>
+                            <input type="text" id="cliente" name="cliente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">Fecha de Recepción</label>
+                            <input type="date" id="fecha" name="fecha" class="date-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hora">Hora de Recepción</label>
+                            <input type="time" id="hora" name="hora" class="date-time" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="producto">Producto a Procesar *</label>
+                        <select id="producto" name="producto" required>
+                            <option value="">Seleccione un producto</option>
+                            <option value="Chía">🌱 Chía</option>
+                            <option value="Fréjol negro">🫘 Fréjol Negro</option>
+                            <option value="Fréjol rojo">🫘 Fréjol Rojo</option>
+                            <option value="Sésamo blanco">🌾 Sésamo Blanco</option>
+                            <option value="Sésamo negro">🌾 Sésamo Negro</option>
+                            <option value="Fréjol blanco">🫘 Fréjol Blanco</option>
+                            <option value="Fréjol pinto">🫘 Fréjol Pinto</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Cantidad Recibida -->
+                <div class="form-section">
+                    <h3><span class="section-icon">2</span>Cantidad Recibida</h3>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="toneladas_llegaron">Toneladas Recibidas *</label>
+                            <input type="number" step="0.01" id="toneladas_llegaron" name="toneladas_llegaron" required onchange="calcularTotales()">
+                        </div>
+                        <div class="form-group">
+                            <label for="quintales_llegaron">Quintales Recibidos *</label>
+                            <input type="number" step="0.01" id="quintales_llegaron" name="quintales_llegaron" required onchange="calcularTotales()">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="kg_bolsa">Peso por Bolsa</label>
+                        <select id="kg_bolsa" name="kg_bolsa" required>
+                            <option value="25">25 kg por bolsa</option>
+                            <option value="50">50 kg por bolsa</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Clasificación Primera -->
+                <div class="form-section">
+                    <h3><span class="section-icon">1°</span>Primera Calidad</h3>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="primera_toneladas">Toneladas</label>
+                            <input type="number" step="0.01" id="primera_toneladas" name="primera_toneladas" onchange="calcularTotales()">
+                        </div>
+                        <div class="form-group">
+                            <label for="primera_quintales">Quintales</label>
+                            <input type="number" step="0.01" id="primera_quintales" name="primera_quintales" onchange="calcularTotales()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clasificación Segunda -->
+                <div class="form-section">
+                    <h3><span class="section-icon">2°</span>Segunda Calidad</h3>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="segunda_toneladas">Toneladas</label>
+                            <input type="number" step="0.01" id="segunda_toneladas" name="segunda_toneladas" onchange="calcularTotales()">
+                        </div>
+                        <div class="form-group">
+                            <label for="segunda_quintales">Quintales</label>
+                            <input type="number" step="0.01" id="segunda_quintales" name="segunda_quintales" onchange="calcularTotales()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clasificación Tercera -->
+                <div class="form-section">
+                    <h3><span class="section-icon">3°</span>Tercera Calidad</h3>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="tercera_toneladas">Toneladas</label>
+                            <input type="number" step="0.01" id="tercera_toneladas" name="tercera_toneladas" onchange="calcularTotales()">
+                        </div>
+                        <div class="form-group">
+                            <label for="tercera_quintales">Quintales</label>
+                            <input type="number" step="0.01" id="tercera_quintales" name="tercera_quintales" onchange="calcularTotales()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Repaso -->
+                <div class="form-section">
+                    <h3><span class="section-icon">R</span>Repaso</h3>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="repaso_toneladas">Toneladas</label>
+                            <input type="number" step="0.01" id="repaso_toneladas" name="repaso_toneladas" onchange="calcularTotales()">
+                        </div>
+                        <div class="form-group">
+                            <label for="repaso_quintales">Quintales</label>
+                            <input type="number" step="0.01" id="repaso_quintales" name="repaso_quintales" onchange="calcularTotales()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Descarte -->
+                <div class="form-section">
+                    <h3><span class="section-icon">✕</span>Descarte</h3>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="descarte_toneladas">Toneladas</label>
+                            <input type="number" step="0.01" id="descarte_toneladas" name="descarte_toneladas" onchange="calcularTotales()">
+                        </div>
+                        <div class="form-group">
+                            <label for="descarte_quintales">Quintales</label>
+                            <input type="number" step="0.01" id="descarte_quintales" name="descarte_quintales" onchange="calcularTotales()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resumen de Totales -->
+                <div class="calculation-display" id="totalesDisplay" style="display: none;">
+                    <h4>📊 Resumen de Totales</h4>
+                    <div class="total-display">
+                        <p>Total Procesado: <span id="totalProcesado">0</span> toneladas</p>
+                        <p>Diferencia con lo recibido: <span id="diferencia">0</span> toneladas</p>
+                    </div>
+                </div>
+                
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">
+                        📤 Enviar y Guardar en Google Sheets
+                    </button>
+                    
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Guardando datos en Google Sheets...</p>
+                    </div>
+                    
+                    <div class="success-message" id="successMessage">
+                        <h4>✅ ¡Datos guardados exitosamente!</h4>
+                        <p>La información ha sido registrada en Google Sheets.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Establecer fecha y hora actual
+        document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
+        document.getElementById('hora').value = new Date().toLocaleTimeString('es-ES', {hour12: false}).slice(0,5);
+        
+        // Función para calcular totales
+        function calcularTotales() {
+            const recibido = parseFloat(document.getElementById('toneladas_llegaron').value) || 0;
+            
+            const primera = parseFloat(document.getElementById('primera_toneladas').value) || 0;
+            const segunda = parseFloat(document.getElementById('segunda_toneladas').value) || 0;
+            const tercera = parseFloat(document.getElementById('tercera_toneladas').value) || 0;
+            const repaso = parseFloat(document.getElementById('repaso_toneladas').value) || 0;
+            const descarte = parseFloat(document.getElementById('descarte_toneladas').value) || 0;
+            
+            const totalProcesado = primera + segunda + tercera + repaso + descarte;
+            const diferencia = recibido - totalProcesado;
+            
+            document.getElementById('totalProcesado').textContent = totalProcesado.toFixed(2);
+            document.getElementById('diferencia').textContent = diferencia.toFixed(2);
+            
+            if (recibido > 0) {
+                document.getElementById('totalesDisplay').style.display = 'block';
+            }
+        }
+        
+        // Manejar envío del formulario
+        document.getElementById('granosForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            // Mostrar loading
+            loading.style.display = 'block';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            // Recopilar datos del formulario
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Agregar timestamp
+            data.timestamp = new Date().toISOString();
+            
+            try {
+                // Aquí debes reemplazar 'YOUR_GOOGLE_APPS_SCRIPT_URL' con la URL real de tu Google Apps Script
+                const response = await fetch('https://script.google.com/macros/s/AKfycby_t1RrpHIHzxqvox68zDIYQEWTj4ymba2Z3JWfm4RWakySEuOXM7lX1XWAzTPlF5cq/exec', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    // Éxito
+                    loading.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    this.reset();
+                    document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
+                    document.getElementById('hora').value = new Date().toLocaleTimeString('es-ES', {hour12: false}).slice(0,5);
+                    document.getElementById('totalesDisplay').style.display = 'none';
+                } else {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al guardar los datos. Por favor, intente nuevamente.');
+                loading.style.display = 'none';
+            }
+            
+            // Restaurar botón
+            submitBtn.disabled = false;
+            submitBtn.textContent = '📤 Enviar y Guardar en Google Sheets';
+        });
+    </script>
+</body>
+</html>
