@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sistema de Recepción de Granos - Comercial Nieves</title>
     <style>
         * {
@@ -260,15 +260,15 @@
                     <div class="three-col">
                         <div class="form-group">
                             <label for="cliente">Cliente *</label>
-                            <input type="text" id="cliente" name="cliente" required>
+                            <input type="text" id="cliente" name="cliente" required />
                         </div>
                         <div class="form-group">
                             <label for="fecha">Fecha de Recepción</label>
-                            <input type="date" id="fecha" name="fecha" class="date-time" required>
+                            <input type="date" id="fecha" name="fecha" class="date-time" required />
                         </div>
                         <div class="form-group">
                             <label for="hora">Hora de Recepción</label>
-                            <input type="time" id="hora" name="hora" class="date-time" required>
+                            <input type="time" id="hora" name="hora" class="date-time" required />
                         </div>
                     </div>
                     
@@ -294,11 +294,11 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="toneladas_llegaron">Toneladas Recibidas *</label>
-                            <input type="number" step="0.01" id="toneladas_llegaron" name="toneladas_llegaron" required onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="toneladas_llegaron" name="toneladas_llegaron" required onchange="calcularTotales()" />
                         </div>
                         <div class="form-group">
                             <label for="quintales_llegaron">Quintales Recibidos *</label>
-                            <input type="number" step="0.01" id="quintales_llegaron" name="quintales_llegaron" required onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="quintales_llegaron" name="quintales_llegaron" required onchange="calcularTotales()" />
                         </div>
                     </div>
                     
@@ -317,11 +317,11 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="primera_toneladas">Toneladas</label>
-                            <input type="number" step="0.01" id="primera_toneladas" name="primera_toneladas" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="primera_toneladas" name="primera_toneladas" onchange="calcularTotales()" />
                         </div>
                         <div class="form-group">
                             <label for="primera_quintales">Quintales</label>
-                            <input type="number" step="0.01" id="primera_quintales" name="primera_quintales" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="primera_quintales" name="primera_quintales" onchange="calcularTotales()" />
                         </div>
                     </div>
                 </div>
@@ -332,11 +332,11 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="segunda_toneladas">Toneladas</label>
-                            <input type="number" step="0.01" id="segunda_toneladas" name="segunda_toneladas" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="segunda_toneladas" name="segunda_toneladas" onchange="calcularTotales()" />
                         </div>
                         <div class="form-group">
                             <label for="segunda_quintales">Quintales</label>
-                            <input type="number" step="0.01" id="segunda_quintales" name="segunda_quintales" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="segunda_quintales" name="segunda_quintales" onchange="calcularTotales()" />
                         </div>
                     </div>
                 </div>
@@ -347,11 +347,11 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="tercera_toneladas">Toneladas</label>
-                            <input type="number" step="0.01" id="tercera_toneladas" name="tercera_toneladas" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="tercera_toneladas" name="tercera_toneladas" onchange="calcularTotales()" />
                         </div>
                         <div class="form-group">
                             <label for="tercera_quintales">Quintales</label>
-                            <input type="number" step="0.01" id="tercera_quintales" name="tercera_quintales" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="tercera_quintales" name="tercera_quintales" onchange="calcularTotales()" />
                         </div>
                     </div>
                 </div>
@@ -362,144 +362,142 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="repaso_toneladas">Toneladas</label>
-                            <input type="number" step="0.01" id="repaso_toneladas" name="repaso_toneladas" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="repaso_toneladas" name="repaso_toneladas" onchange="calcularTotales()" />
                         </div>
                         <div class="form-group">
                             <label for="repaso_quintales">Quintales</label>
-                            <input type="number" step="0.01" id="repaso_quintales" name="repaso_quintales" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="repaso_quintales" name="repaso_quintales" onchange="calcularTotales()" />
                         </div>
                     </div>
                 </div>
                 
                 <!-- Descarte -->
                 <div class="form-section">
-                    <h3><span class="section-icon">✕</span>Descarte</h3>
+                    <h3><span class="section-icon">D</span>Descarte</h3>
                     <div class="row">
                         <div class="form-group">
                             <label for="descarte_toneladas">Toneladas</label>
-                            <input type="number" step="0.01" id="descarte_toneladas" name="descarte_toneladas" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="descarte_toneladas" name="descarte_toneladas" onchange="calcularTotales()" />
                         </div>
                         <div class="form-group">
                             <label for="descarte_quintales">Quintales</label>
-                            <input type="number" step="0.01" id="descarte_quintales" name="descarte_quintales" onchange="calcularTotales()">
+                            <input type="number" step="0.01" id="descarte_quintales" name="descarte_quintales" onchange="calcularTotales()" />
                         </div>
                     </div>
                 </div>
                 
-                <!-- Resumen de Totales -->
-                <div class="calculation-display" id="totalesDisplay" style="display: none;">
-                    <h4>📊 Resumen de Totales</h4>
-                    <div class="total-display">
-                        <p>Total Procesado: <span id="totalProcesado">0</span> toneladas</p>
-                        <p>Diferencia con lo recibido: <span id="diferencia">0</span> toneladas</p>
-                    </div>
+                <!-- Totales calculados -->
+                <div class="form-section calculation-display">
+                    <div class="total-display" id="totalToneladas">Total Toneladas: 0.00</div>
+                    <div class="total-display" id="totalQuintales">Total Quintales: 0.00</div>
                 </div>
                 
                 <div class="submit-section">
-                    <button type="submit" class="submit-btn">
-                        📤 Enviar y Guardar en Google Sheets
-                    </button>
-                    
-                    <div class="loading" id="loading">
+                    <button type="submit" class="submit-btn">Enviar Datos</button>
+                    <div class="loading" id="loadingIndicator">
                         <div class="spinner"></div>
-                        <p>Guardando datos en Google Sheets...</p>
+                        Enviando datos...
                     </div>
-                    
                     <div class="success-message" id="successMessage">
-                        <h4>✅ ¡Datos guardados exitosamente!</h4>
-                        <p>La información ha sido registrada en Google Sheets.</p>
+                        Datos enviados con éxito. ¡Gracias!
                     </div>
                 </div>
             </form>
         </div>
     </div>
-
+    
     <script>
-        // Establecer fecha y hora actual
-        document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
-        document.getElementById('hora').value = new Date().toLocaleTimeString('es-ES', {hour12: false}).slice(0,5);
-        
         // Función para calcular totales
         function calcularTotales() {
-            const recibido = parseFloat(document.getElementById('toneladas_llegaron').value) || 0;
-            
-            const primera = parseFloat(document.getElementById('primera_toneladas').value) || 0;
-            const segunda = parseFloat(document.getElementById('segunda_toneladas').value) || 0;
-            const tercera = parseFloat(document.getElementById('tercera_toneladas').value) || 0;
-            const repaso = parseFloat(document.getElementById('repaso_toneladas').value) || 0;
-            const descarte = parseFloat(document.getElementById('descarte_toneladas').value) || 0;
-            
-            const totalProcesado = primera + segunda + tercera + repaso + descarte;
-            const diferencia = recibido - totalProcesado;
-            
-            document.getElementById('totalProcesado').textContent = totalProcesado.toFixed(2);
-            document.getElementById('diferencia').textContent = diferencia.toFixed(2);
-            
-            if (recibido > 0) {
-                document.getElementById('totalesDisplay').style.display = 'block';
+            // Obtener valores numéricos, convierto strings a números o 0 si vacíos
+            function toNum(id) {
+                const val = document.getElementById(id).value;
+                return val ? parseFloat(val) : 0;
             }
+            
+            const camposToneladas = [
+                'primera_toneladas', 'segunda_toneladas', 'tercera_toneladas', 
+                'repaso_toneladas', 'descarte_toneladas'
+            ];
+            const camposQuintales = [
+                'primera_quintales', 'segunda_quintales', 'tercera_quintales',
+                'repaso_quintales', 'descarte_quintales'
+            ];
+            
+            let totalT = 0, totalQ = 0;
+            camposToneladas.forEach(id => totalT += toNum(id));
+            camposQuintales.forEach(id => totalQ += toNum(id));
+            
+            document.getElementById('totalToneladas').textContent = 'Total Toneladas: ' + totalT.toFixed(2);
+            document.getElementById('totalQuintales').textContent = 'Total Quintales: ' + totalQ.toFixed(2);
         }
         
-        // Manejar envío del formulario
-        document.getElementById('granosForm').addEventListener('submit', async function(e) {
+        // Enviar formulario a Google Apps Script
+        document.getElementById('granosForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const loading = document.getElementById('loading');
-            const successMessage = document.getElementById('successMessage');
-            const submitBtn = document.querySelector('.submit-btn');
-            
             // Mostrar loading
-            loading.style.display = 'block';
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
+            document.getElementById('loadingIndicator').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
             
-            // Recopilar datos del formulario
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
+            // Recoger datos
+            const formData = {
+                timestamp: new Date().toISOString(),
+                cliente: document.getElementById('cliente').value,
+                fecha: document.getElementById('fecha').value,
+                hora: document.getElementById('hora').value,
+                producto: document.getElementById('producto').value,
+                toneladas_llegaron: parseFloat(document.getElementById('toneladas_llegaron').value) || 0,
+                quintales_llegaron: parseFloat(document.getElementById('quintales_llegaron').value) || 0,
+                kg_bolsa: document.getElementById('kg_bolsa').value,
+                primera_toneladas: parseFloat(document.getElementById('primera_toneladas').value) || 0,
+                primera_quintales: parseFloat(document.getElementById('primera_quintales').value) || 0,
+                segunda_toneladas: parseFloat(document.getElementById('segunda_toneladas').value) || 0,
+                segunda_quintales: parseFloat(document.getElementById('segunda_quintales').value) || 0,
+                tercera_toneladas: parseFloat(document.getElementById('tercera_toneladas').value) || 0,
+                tercera_quintales: parseFloat(document.getElementById('tercera_quintales').value) || 0,
+                repaso_toneladas: parseFloat(document.getElementById('repaso_toneladas').value) || 0,
+                repaso_quintales: parseFloat(document.getElementById('repaso_quintales').value) || 0,
+                descarte_toneladas: parseFloat(document.getElementById('descarte_toneladas').value) || 0,
+                descarte_quintales: parseFloat(document.getElementById('descarte_quintales').value) || 0,
+            };
             
-            // Agregar timestamp
-            data.timestamp = new Date().toISOString();
+            // Cambia la URL por la tuya del Apps Script desplegado (modo web app)
+            const scriptURL = 'https://script.google.com/macros/s/TU_ID_AQUI/exec';
             
-            try {
-                // Aquí debes reemplazar 'YOUR_GOOGLE_APPS_SCRIPT_URL' con la URL real de tu Google Apps Script
-               const formData = new FormData(this);
-formData.append('timestamp', new Date().toISOString());
-
-fetch('https://script.google.com/macros/s/AKfycbygdlsMijyZFu1fF5ai4LI3daxsBJzDNAVD38r2RgXkj29J2G85kOtA0-3uE84OaCjs/exec', {
-  method: 'POST',
-  body: new URLSearchParams(formData) // evita preflight
-})
-.then(r => r.text())
-.then(res => {
-    console.log(res);
-    // mostrar mensaje éxito
-})
-.catch(err => console.error('Error:', err));
-
-                
-                if (response.ok) {
-                    // Éxito
-                    loading.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    this.reset();
-                    document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
-                    document.getElementById('hora').value = new Date().toLocaleTimeString('es-ES', {hour12: false}).slice(0,5);
-                    document.getElementById('totalesDisplay').style.display = 'none';
-                } else {
-                    throw new Error('Error en la respuesta del servidor');
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al guardar los datos. Por favor, intente nuevamente.');
-                loading.style.display = 'none';
-            }
-            
-            // Restaurar botón
-            submitBtn.disabled = false;
-            submitBtn.textContent = '📤 Enviar y Guardar en Google Sheets';
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                if (data.result === 'success') {
+                    document.getElementById('successMessage').style.display = 'block';
+                    // Resetear formulario
+                    document.getElementById('granosForm').reset();
+                    calcularTotales();
+                } else {
+                    alert('Error al enviar: ' + (data.error || 'Error desconocido'));
+                }
+            })
+            .catch(error => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                alert('Error al enviar: ' + error.message);
+            });
+        });
+        
+        // Inicializar fecha y hora con valores actuales
+        window.addEventListener('load', () => {
+            const fechaInput = document.getElementById('fecha');
+            const horaInput = document.getElementById('hora');
+            const now = new Date();
+            fechaInput.value = now.toISOString().slice(0,10);
+            horaInput.value = now.toTimeString().slice(0,5);
+            calcularTotales();
         });
     </script>
 </body>
