@@ -466,7 +466,7 @@
             const scriptURL = 'https://script.google.com/macros/s/AKfycbw65B0doWGr3B14ZTQHqQGaaNb8Lm0JgooL-Pws6moWoDYmJHQ9d8INZj8jAJkzBMZ3/exec';
             
             fetch(scriptURL, {
-                method: 'POST',
+                method: 'POST','GET','PUT','DELETE',
                 body: JSON.stringify(formData),
                 headers: {
                     'Content-Type': 'application/json'
